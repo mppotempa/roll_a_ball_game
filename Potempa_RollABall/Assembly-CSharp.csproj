@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\_Scripts\CameraController.cs" />
      <Compile Include="Assets\_Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Rotator.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/Mary/Documents/MSCHG300/roll-a-ball/Potempa_RollABall/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
