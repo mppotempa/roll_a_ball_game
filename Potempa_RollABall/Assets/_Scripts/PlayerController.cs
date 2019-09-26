@@ -53,6 +53,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.other.CompareTag("Obstacle"))
+        {
+
+        }
+
+    }
+
     void SetCountText()
     {
         //output the score to the screen instead of the count
