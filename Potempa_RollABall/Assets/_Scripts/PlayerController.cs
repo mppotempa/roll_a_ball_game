@@ -44,20 +44,17 @@ public class PlayerController : MonoBehaviour
             count = count + 1;
             SetCountText();
         }
-        //addition to roll a ball game
-        //if the player comes in contact with one of the obstacles, subtract from score;
-        else if (other.gameObject.CompareTag("Obstacle"))
-        {
-            score -= 1;
-            SetCountText();
-        }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        //addition to roll a ball game
+        //if the player comes in contact with one of the obstacles, subtract from score;
         if (collision.other.CompareTag("Obstacle"))
         {
-
+            score -= 1;
+            SetCountText();
         }
 
     }
