@@ -62,10 +62,26 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         //output the score to the screen instead of the count
-        countText.text = "Count: " + score.ToString();
+        countText.text = "Score: " + score.ToString() + "\nItems Left: " + (12 - count).ToString();
         if(count >= 12)
         {
-            winText.text = "You Win!";
+            if (score <= 0)
+            {
+                winText.text = "You're supposed to score points,\nnot loose them!\nYour score: " + score.ToString();
+            }
+            else if (score <= 6)
+            {
+                winText.text = "Nice Try!\nYour score: " + score.ToString();
+            }
+            else if(score < 12)
+            {
+                winText.text = "Good Job!\nYour score: " + score.ToString();
+            }
+            else
+            {
+                winText.text = "Perfect score!\nYour score: " + score.ToString();
+            }
+            
         }
     }
 }
