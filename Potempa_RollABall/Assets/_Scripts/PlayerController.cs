@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -63,25 +64,38 @@ public class PlayerController : MonoBehaviour
     {
         //output the score to the screen instead of the count
         countText.text = "Score: " + score.ToString() + "\nItems Left: " + (12 - count).ToString();
-        if(count >= 12)
+        if(count >= 2)
         {
+            string message = "";
+            //set the message based on the score
             if (score <= 0)
             {
-                winText.text = "You're supposed to score points,\nnot loose them!\nYour score: " + score.ToString();
+                message = "You're supposed to score points,\nnot loose them!\nYour score: ";
             }
             else if (score <= 6)
             {
-                winText.text = "Nice Try!\nYour score: " + score.ToString();
+                message = "Nice Try!\nYour score: ";
             }
             else if(score < 12)
             {
-                winText.text = "Good Job!\nYour score: " + score.ToString();
+                message = "Good Job!\nYour score: ";
             }
             else
             {
-                winText.text = "Perfect score!\nYour score: " + score.ToString();
+                message = "Perfect score!\nYour score: ";
             }
+            //output the message
+            winText.text = message + score.ToString() + "\nRestart in 2 sec.";
+            //call restartlevel
+            Invoke("RestartLevel", 2f);
             
         }
     }
+    
+    void RestartLevel()
+    {
+        //reload the level
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    
 }
