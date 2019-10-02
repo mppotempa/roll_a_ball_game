@@ -12,8 +12,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     //this counts how many of the objects have been picked up
     private int count;
-    //set score counter
+    //set score
     private int score;
+    //create an empty container for the prefab
+    public GameObject pickupPreFab;
  
     void Start()
     {
@@ -22,6 +24,13 @@ public class PlayerController : MonoBehaviour
         SetCountText();
         winText.text = "";
 
+        //control how many pickups to spawn
+        int pickupsSpawned = 12;
+        while(pickupsSpawned > 0)
+        {
+            pickupsSpawned--;
+            SpawnPickup();
+        }
     }
 
     private void FixedUpdate()
@@ -64,7 +73,7 @@ public class PlayerController : MonoBehaviour
     {
         //output the score to the screen instead of the count
         countText.text = "Score: " + score.ToString() + "\nItems Left: " + (12 - count).ToString();
-        if(count >= 2)
+        if(count >= 12)
         {
             string message = "";
             //set the message based on the score
@@ -98,4 +107,12 @@ public class PlayerController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     
+    //randomly generate pickups
+    void SpawnPickup()
+    {
+        //pick random position
+        Vector3 randomPos = new Vector3(Random.Range(-8f, 8f), .5f, Random.Range(-8f, 8f));
+        //create the object at the position
+        Instantiate(pickupPreFab, randomPos, pickupPreFab.transform.rotation);
+    }
 }
