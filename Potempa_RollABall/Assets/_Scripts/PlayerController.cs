@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
             other.gameObject.SetActive(false);
             //increment score
             score++;
-            count = count + 1;
+            count++;
             SetCountText();
         }
         
